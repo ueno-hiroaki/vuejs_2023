@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue.js sample</title>
+		<link rel="stylesheet" href="style.css" ><!--css-->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	
+	<body>
+		<h2>クリックしたらカウントアップ</h2>
+		<div id="app"><!--vue.jsと繋がる要素 Vueインスタンスのel:と同じ名前に-->
+			<p> {{count}}回</p><!--データの表示 cdnがないとこの分のまま出てしまう-->
+			<button v-on:click="countUp">カウント</button>
+		</div>
+		<!--htmlの記述をしてからscriptを書く-->
+		<script>
+		new Vue({
+			el: "#app",//#はid名
+			data: {
+				count:0
+			},
+			methods: {//処理の部分 buttonのcountupがされたときする処理
+				countUp: function() {
+					this.count++;
+				}
+			}
+		})
+		</script>
+		
+	</body>
+</html>
+
