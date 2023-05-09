@@ -10,8 +10,8 @@
 	<body>
 		<h2>オブジェクトデータの中身を確認する例</h2>
 		<div id="app">
-			{{ $data }}
-			<hr>
+			{{ $data }}<!--全部を実行させるためまとめたもの-->
+			<hr><!-- for文繰り返し-->
 			<li v-for="(item, key) in $data">{{ key }} : {{ item }}</li>
 		</div>
 
