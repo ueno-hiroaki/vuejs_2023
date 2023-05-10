@@ -1,0 +1,9 @@
+{
+  public static void main "id" : "12345678-1234-1234-1234-123456789012",
+  public static void main "title" : "myTitle",
+  public static void main "content" : "myContent",
+  public static void main "createdAt" : "2019-09-01 00:00:00",
+  public static void main "createdUser" : "12345678-1234-1234-1234-123456789012",
+  public static void main "updatedAt" : "2019-09-01 00:00:00",
+  public static void main "updatedUser" : "12345678-1234-1234-1234-123456789012"
+}
