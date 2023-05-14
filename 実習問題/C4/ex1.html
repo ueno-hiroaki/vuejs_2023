@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Vue.js 演習問題</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src=
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+    </script>
+  </head>
+  
+  <body>
+    <h2>入力した数値のたし算</h2>
+    <div id="app">
+        <p><!--文字列の数字を数値に変える　v-model.number 
+        ここで.numberを付けない場合、計算の時にparseIntをつけIntの計算であることを明記する
+    {{ parseInt(number1) + parseInt(number2) }}-->
+            数値１ = <input v-model.number="num1" type="number">
+        <br>
+            数値２ = <input v-model.number="num2" type="number">
+        </p>
+        <p>
+            たし算： {{ num1 }} + {{ num2 }} = {{ num1+num2 }}
+        </p>
+    </div>
+    
+    <script>
+      new Vue({
+        el:'#app',
+        data:{
+            num1:0,
+            num2:0
+        }
+      })
+    </script>
+  </body>
+
+</html>
