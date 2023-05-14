@@ -12,7 +12,7 @@
 		<div id="app">
 			<ul>
 				<li v-for="item in myArray"> {{ item }}</li>
-			</ul>
+			</ul><!--v-on:clickはmethods-->
 			<button v-on:click="sortData(myArray)">ソートする</button><br>
 		</div>
 
@@ -25,7 +25,7 @@
 				methods: {
 					sortData: function(listdata) {
 						listdata.sort(function(a,b) {
-							return (a < b ? -1 : 1);
+							return (a < b ? -1 : 1);//真なら-1,偽なら1
 						});
 					}
 				}
