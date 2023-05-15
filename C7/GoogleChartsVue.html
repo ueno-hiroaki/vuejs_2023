@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue.js sample</title>
+		<link rel="stylesheet" href="style.css" >
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+
+   <body>
+		<h2>Google Chartsの円グラフにボタンで投票できる例</h2>
+		<h3>好きなランチ投票</h3>
+		<div id="chart_div" style="height: 500px;"></div>
+		<div id="app"><!-- item(中身),c(添え字)　c>0はindexが0以上ならという指定 -->
+			<li v-for="(item, c) in dataArray" v-if="c>0">{{item[0]}} : {{item[1]}}
+				<button v-on:click="addOne(c)">一票</button>
+			</li>
+		</div>
+
+		<script>//普通のJs
+			// グラフに使うデータ
+			 let orgdata = [
+				['種類', '個数'],//c>0でこれが表示されないようにしている
+				['幕の内', 3], ['カルビ弁当', 4], [ 'オムライス', 5],
+				['冷やし中華', 1], ['ビビンバ丼', 3], [ 'ざるそば', 1]
+			 ];
+	
+			google.charts.load('current', {packages: ['corechart']});
+			google.charts.setOnLoadCallback(drawBasic);
+	
+			// グラフを表示する関数
+			function drawBasic() {
+				let data = google.visualization.arrayToDataTable(orgdata);
+				let options = {title: '好きなランチ',"is3D": true};
+				let chart = new google.visualization.PieChart(
+					document.getElementById('chart_div'));
+				chart.draw(data, options);
+			}
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script>//vue.js
+			new Vue({
+				el: '#app',
+				data: {
+					dataArray:orgdata
+				},
+				methods: {
+					addOne: function(val) {
+						let obj = this.dataArray[val];//objに数値を入れ ++なので１つづつ増える
+						obj[1]++;//obj[0]は商品名,[1]に票数が入っている
+						//引数3の2つめが1なので変更
+						this.dataArray.splice(val, 1, obj);//valをobjに変更
+						drawBasic();
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
