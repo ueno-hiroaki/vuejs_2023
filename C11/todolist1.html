@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue.js sample</title>
+		<link rel="stylesheet" href="style.css" >
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	
+	<body>
+		<h2>ToDoリスト</h2>
+		<div id="app">
+			<div v-for="todo in todos">
+				<label><!--ラベルを押してもチェックが付けれる-->
+					<input type="checkbox" v-model="todo.done">
+					<span v-bind:class="{donestyle:todo.done}">{{todo.text}}</span>
+				</label><!--チェックがつくとcssがつく-->
+			</div>
+			<p>{{ remaining }} / {{ todos.length }}件処理</p>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					todos: [
+						{done:false, text:'パンを買う'},
+						{done:false, text:'コーヒーを買う'}
+					]
+				},
+				computed: {//値が変われば再計算される
+					remaining: function() {//trueのlengthだけでる
+						return this.todos.filter(function(val) {
+							return val.done;
+						}).length;
+					}
+				}
+			})
+			
+		</script>
+
+		<style>
+			.donestyle {
+				text-decoration: line-through;
+				color: lightgray;
+			}
+		</style>
+	</body>
+</html>
