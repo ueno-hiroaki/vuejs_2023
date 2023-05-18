@@ -10,7 +10,7 @@
 	<body>
 		<h2>ボタンを押してリストが増減するとき、アニメーションする例</h2>
 		<div id="app">
-			<transition-group>
+			<transition-group><!-- ulからliを書く 複数なのでtransition-group -->
 				<li v-for="item in dataArray" v-bind:key="item"> {{item}}</li>
 			</transition-group>
 			<label><input v-model="addItem" placeholder="追加するリスト"></label>
