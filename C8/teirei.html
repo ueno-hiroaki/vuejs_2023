@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <!--　
+        クリアしたらアラートで通知 アラートから一つ出る
+        ボタンの初期位置を変更できる？ CSS?
+    一つ押したら複数の動きが出るように　ミラージュ
+    エイム練習のように動き続けるボタン
+    左右歩き、ダッシュ、ジャンプ、跳ねる、ななめ、
+-->
+	<head>
+        
+		<meta charset="UTF-8">
+		<title>Vue.js sample</title>
+		<link rel="stylesheet" href="style.css" >
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+	</head>
+	
+	<body>
+		<h2>TweenMaxのテスト</h2>
+        <div id="app">
+            <button id="move-btn1" type="button" onclick="aMove()" v-on:click="trueA">移動</button>
+            
+            <button v-if="true1"id="move-btn2" class="myclass"type="button"v-on:click="trueB" onclick="bMove()">移動</button>
+            
+            <button v-if="true2" id="move-btn3" type="button" onclick="cMove()">移動</button>
+        </div>
+        
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+		<script>
+            
+            new Vue({
+                el:'#app',
+                data:{
+                    true1:false,//ボタンを最初から表示させない。前のボタンを押したら表示するように変更
+                    true2:false
+                },
+                methods:{
+                    trueA:function(){
+                        this.true1 = true
+                    },
+                    trueB:function(){
+                        this.true2 = true
+                    }
+                }
+            })
+			function aMove() {
+				TweenMax.to('#move-btn2', 1, {x: "+=1000px",y: "-=0px",rotation: +360,yoyo:true,repeat:-1} );
+                this.true1 = true;
+			}
+			function bMove() {
+				TweenMax.to('#move-btn3', 1, {y: "-=500px",yoyo:true,repeat:-1} );
+			}
+		</script>
+        <style>
+            .my-class{/*場所の指定ができる*/
+                position:absolute;
+                bottom:500px;
+                right:0px;
+            }
+            .v-enter{
+                opacity:0;
+            }
+        </style>
+	</body>
+</html>

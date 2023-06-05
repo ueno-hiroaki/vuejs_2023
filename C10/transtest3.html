@@ -40,13 +40,6 @@
 							this.dataArray.splice(r, 1);
 						}
 						this.dataArray = buffer;//二回変わってから動いている
-						var len = this.dataArray.length;
-						for (var i=len; len>0; len--) {
-							var r = Math.floor(Math.random() * len);
-							buffer.push(this.dataArray[r]);
-							this.dataArray.splice(r, 1);
-						}
-						this.dataArray = buffer;
 					},
 				}
 			})

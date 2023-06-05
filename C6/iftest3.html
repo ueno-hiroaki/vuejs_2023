@@ -10,7 +10,9 @@
 	<body>
 		<h2>クリックしたらいいねボタンが消える例</h2>
 		<div id="app"><!--trueの時ボタンを表示,初期はtrue-->
-			<button v-if="isShow" v-on:click="iine">いいね！</button>			
+			<button v-if="isShow" v-on:click="iine">いいね！</button>	
+			<input type="button" value="表示"onclick="document.getElementById('aaaa').style.visibility = 'visible';">
+			<input type="button" value="非表示"onclick="document.getElementById('aaaa').style.visibility = 'hidden';">		
 		</div>
 
 		<script>
