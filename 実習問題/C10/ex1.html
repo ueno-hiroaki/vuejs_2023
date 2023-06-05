@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>効果測定</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src=
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+    </script>
+  </head>
+  
+  <body>
+    <h2>ボタンを押してリストが増減するとき、アニメーションする例</h2>
+    <div id="app">
+      <ol>
+        <transition-group><!--cityのみ？indexいるかどうか-->
+          <li v-for="city,index in cityList" v-bind:key="city">{{ city }}</li>
+        </transition-group>
+      </ol>
+      <p>
+        <label>都市名：
+          <input type="text" v-model="addItem" placeholder="追加する県庁所在地">
+        </label>
+        <button v-on:click="add">追加</button>
+      </p>
+      <p>
+        <label>特定の場所に追加する都市名：
+          <input type="text" v-model="addItem" placeholder="追加する県庁所在地">
+        </label>
+        <input type="number" v-model="addnum" placeholder="追加する場所の番号">
+        <button v-on:click="basyositei">追加</button>
+      </p>
+      <p>
+        <label>特定の場所の都市名を変更する：
+          <input type="text" v-model="chItem" placeholder="変更する県庁所在地">
+        </label>
+        <input type="number" v-model="chnum" placeholder="変更する場所の番号">
+        <button v-on:click="change">追加</button>
+      </p>
+      <p>
+        <label>番号：
+          <input type="number" v-model="removeNumber" placeholder=0>
+        </label>
+        <button v-on:click="del">削除</button>
+      </p>
+    </div>
+    
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          cityList: ['札幌市', '青森市', '仙台市'],
+          addItem: '',
+          addnum:0,
+          removeNumber: 0,
+          chItem:'',
+          chnum:0,
+        },
+        methods: {
+          add:function(){
+            this.cityList.push(this.addItem);
+            this.addItem = '';//プレースホルダーを初期化するため
+          },
+          basyositei:function(){
+            this.cityList.splice(this.addnum,0,this.addItem);
+            this.addItem = '';//プレースホルダーを初期化するため
+          },
+          del:function(){//0の時-1になり最後尾を削除
+            this.cityList.splice(this.removeNumber-1,1)
+          },
+          change:function(){//0の時-1になり最後尾を削除
+            this.cityList.splice(this.chnum,1,chItem)
+          }
+
+
+
+
+
+        }
+      })
+    </script>
+    <style>
+        /* 現れている最中と、消えている最中は、0.5秒 */
+        .v-enter-active, .v-leave-active {
+          transition: 0.5s;
+        }
+        /* 現れる前の状態と、消えたときの状態は、透明度0で、右へ50移動*/
+        .v-enter, .v-leave-to {
+          opacity: 0;
+          transform: translateX(50px)
+        }
+      </style>
+    </body>
+  </html>
+  

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>vue.js 演習問題</title>
+    
+    <link rel="stylesheet" href="style.css" >
+    <script src=
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+    </script>
+
+  </head>
+  
+  <body>
+    <h2>コンポーネントを作って表示する例</h2>
+    <div id="app">
+        <table border="1"><!--枠組み！-->
+            <caption>各国のあいさつ</caption><!--テーブルのタイトル 真ん中に来る-->
+            <tbody>
+                <tr>
+                    <th>日本</th><!--行のタイトル的立ち位置。太文字になる-->
+                    <td><greeting-jp></greeting-jp></td>
+                </tr>
+                <tr>
+                    <th>アメリカ</th>
+                    <td><greeting-en></greeting-en></td>
+                </tr>
+                <tr>
+                    <th>フランス</th>
+                    <td><greeting-fr></greeting-fr></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+      var GreetingJP = {
+        template: '<p class="my-comp">こんにちは！！</p>'
+      }
+      var GreetingEN = {
+        template:'<p class="my-comp">Hello!!</p>'
+      }
+      var GreetingFR = {
+        template:'<p class="my-comp">Bonjour!!</p>'
+      }
+      new Vue({
+        el: '#app',
+        components: {
+          'greeting-jp': GreetingJP,
+          'greeting-en': GreetingEN,
+          'greeting-fr': GreetingFR
+        }
+      })
+    </script>
+    
+    <style>
+      .my-comp {
+        width: 300px;
+        background-color: #ffffe0;
+        border: solid;
+        border-color: darkorange;
+        border-radius: 8px;
+        padding: 8px;
+      }
+    </style>
+  </body>
+</html>

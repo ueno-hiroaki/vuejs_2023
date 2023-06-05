@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>vue.js 演習問題</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src=
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+    </script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>propsで値を渡す</h2>
+            <my-component v-for="item in dataArray" v-bind:objects="item"></my-component>
+        </div>
+        <script>
+            var MyComponent={
+                props:["objects"],
+                template:'<p class="my-comp">商品名：{{ objects.title }}、定価：{{ objects.price }}円</p>',
+            }
+            new Vue({
+                el: '#app',
+                data:{
+                    dataArray:[
+                    {title:"りんこ",price:"120"},
+                    {title:"みかん",price:"100"},
+                    {title:"もも",price:"180"},
+                    {title:"ばなな",price:"150"},
+                    {title:"いちご",price:"250"}
+                    ]
+                },
+                components:{
+                    'my-component':MyComponent
+                }
+            })
+        </script>
+        <style>
+            .my-comp {
+                width: 300px;
+                background-color: #ffffe0;
+                border: solid;
+                border-color: darkorange;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        </style>
+    </body>
+</html>

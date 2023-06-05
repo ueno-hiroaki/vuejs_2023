@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>vue.js 演習問題</title>
+    
+    <link rel="stylesheet" href="style.css" >
+    <script src=
+      "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+    </script>
+
+  </head>
+  
+  <body>
+    <h2>配列からコンポーネントを作って表示する例</h2>
+    <div id="app">
+      <!--コンポーネントの繰り返す-->
+      <my-component v-for="item in dataArray"
+      v-bind:object="item"></my-component>
+    </div>
+
+    <script>
+      var PrefectureData = {
+        props:["object"],
+        template:'<p class="my-comp">県名：{{ object.title }}\
+        人口：{{ object.people }} 万人</p>',
+        
+        }
+  
+      new Vue({
+        el: '#app',
+        data:{
+          dataArray:[
+          {title:'青森県',people:124.9},
+          {title:'岩手県',people:122.9},
+          {title:'秋田県',people:96.9},
+          {title:'宮城県',people:230.6},
+          {title:'山形県',people:108},
+          {title:'福島県',people:184.8}
+          ]
+        },
+        components:{
+          'my-component':PrefectureData
+        }
+      })
+    </script>
+
+    <style>
+      .my-comp {
+        width: 300px;
+        background-color: #ffffe0;
+        border: solid;
+        border-color: darkorange;
+        border-radius: 8px;
+        padding: 8px;
+      }
+    </style>
+    
+  </body>
+</html>

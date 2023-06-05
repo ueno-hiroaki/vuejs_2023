@@ -11,40 +11,25 @@
   <body>
     <div id="app">
       <h2>消費税込み価格計算</h2>
-      定価:<input type="number" v-model.number="price">×<input type="number" v-model.number="count">
+      <div><!--divをつけると一行としてみなされる？改行できる-->
+      定価:<input type="number" v-model.number="price">円 ×
+      <input type="number" v-model.number="count">個</div>
       消費税率：<input type="number" v-model.number="tax">%
-      消費税込み価格は{{ taxinclued }}円です。</div>
-
-
-
-
-
-
-
+      <p>消費税込み価格は{{ taxinclued }}円です。</p></div>
     </div>
-
     <script>
       new Vue({
         el: '#app',
         data: {
-            price:0,
-            count:0,
-            tax:0
+            price:100,
+            count:1,
+            tax:10
         },
-        computed:{
-            taxinclued:function(){
-                return Math.floor(this.price * this.count * (1+tax/100));
+        computed:{//値をどこかに格納するのではなくreturnでそのまま返却
+            taxinclued:function(){//thisをつけることでインスタンス内の変数を使える
+                return Math.floor(this.price * this.count * (this.tax/100+1));
             }
         }
-
-
-
-
-
-
-
-
-
       })
     </script>
   </body>
