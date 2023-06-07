@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+body {
+  color: #24292e;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+li {
+  list-style: none;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto 130px auto;
+  font-size: 0.9rem;
+  padding: 0 4%;
+}
+.site-title {
+  line-height: 1px;
+}
+.site-title a {
+  display: block;
+}
+.sec-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  max-width: 960px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 270px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+#header ul {
+  display: flex;
+  padding: 10px 0;
+}
+#header li {
+  font-size: 0.9rem;
+  margin-left: 30px;
+}
+#header li a {
+  color: #24292e;
+}
+#header li a:hover {
+  opacity: 0.7;
+}
+#header li img.icon {
+  width: 20px;
+}
+#npb {
+  text-align:right;
+}
+.app{
+  display:inline-block;
+}
+.leage{
+  margin:0;
+  display: flex;
+  float:left;
+  width: 500px;
+  height: 38px;
+}
+.flag{
+  aspect-ratio: auto 58 /38;
+}
+li>p{
+  height: 38px;
+  aspect-ratio: auto 38 / 38;
+  margin-right: 10px;;
+}
+.samurai{
+  margin:0;
+  display: flex;
+  float:left;
+  height: 38px;
+}
+.kyudan_logo{
+  width:600px;
+  display: flex;
+  flex-wrap :wrap;
+}
+.radio>label{
+  padding: 5px;
+  cursor: pointer;
+}
+#mainvisual {
+    margin-bottom: 80px;
+  }
+  #mainvisual img {
+    /*width: 100%;*/
+    max-width: 1920px;
+    /*height: 420px;*/
+    object-fit: cover;
+  }
+  @keyframes tonext {
+    75% {
+      left: 0;
+    }
+    95% {
+      left: 100%;
+    }
+    98% {
+      left: 100%;
+    }
+    99% {
+      left: 0;
+    }
+  }
+  
+  @keyframes tostart {
+    75% {
+      left: 0;
+    }
+    95% {
+      left: -300%;
+    }
+    98% {
+      left: -300%;
+    }
+    99% {
+      left: 0;
+    }
+  }
+  
+  @keyframes snap {
+    96% {
+      scroll-snap-align: center;
+    }
+    97% {
+      scroll-snap-align: none;
+    }
+    99% {
+      scroll-snap-align: none;
+    }
+    100% {
+      scroll-snap-align: center;
+    }
+  }
+  body {
+    background-color:#ffffff;
+  }
+  .carousel {
+    position:relative;
+    /*width:400px;*/
+    border:10px solid white;
+    margin:20px auto;
+    box-shadow:0px 0px 40px #000;
+  }
+  .carousel > img {
+    display:none;
+    width:100%;
+  }
+  .carousel > input {
+    position:absolute;
+    left:-9999px;
+  }
+  .carousel > input:checked + label + img {
+    display:block;
+  }
+  
+  .carousel > label,
+  .carousel > input:checked ~ label ~ label ~ label ~ label {
+    display:none;
+  }
+  .carousel > input:checked + label {
+    display:block;
+    left:0;
+  }
+  .carousel > input:checked ~ label ~ label ~ label {
+    display:block;
+    right:0;
+  }
+  
+  .carousel > label {
+    position:absolute;
+    top:0;
+    width:25%;
+    height:100%;
+    visibility:hidden;
+  }
+  .carousel > label:before {
+    content:'';
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    visibility:visible;
+  }
+  .carousel > label:after {
+    display:block;
+    position:absolute;
+    top:50%;
+    width:25px;
+    height:25px;
+    line-height:22px;
+    margin:-15px 10px 0 10px;
+    background-color:black;
+    color:white;
+    font-family:'Arial';
+    font-weight:bold;
+    font-size:18px;
+    text-align:center;
+    visibility:hidden;
+    border:2px solid white;
+    border-radius:20px;
+    box-shadow:0 3px 4px black;
+  }
+  .carousel > label:hover:after {
+    visibility:visible;
+  }
+  
+  .carousel > input:checked + label:after {
+    left:0;
+    content:'\00AB';
+  }
+  .carousel > input:checked ~ label ~ label ~ label:after {
+    right:0;
+    content:'\00BB';
+  }
+  
+  
